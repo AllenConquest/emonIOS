@@ -1,15 +1,16 @@
 //
-//  emonCMSAccountSpec.swift
+//  emonAccountSpec.swift
 //  emonIOS
 //
 //  Created by Allen Conquest on 25/07/2015.
 //  Copyright (c) 2015 Allen Conquest. All rights reserved.
 //
 
-import UIKit
-import XCTest
+import Quick
+import Nimble
+import emonIOS
 
-class emonCMSAccountSpec: QuickSpec {
+class emonAccountSpec: QuickSpec {
 
     override func setUp() {
         super.setUp()
@@ -21,16 +22,16 @@ class emonCMSAccountSpec: QuickSpec {
         super.tearDown()
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
+    override func spec() {
+        
+        it("has a APIKey") {
+            let account = EmonAccount()
+            expect(account.apiKey).to(equal("1db10447b3dcf65fe313e2a1f522d4db"))
+        }
+        it("has array of Feeds") {
+            let account = EmonAccount()
+            expect(account.feeds.count).to(beGreaterThan(0))
         }
     }
-
+    
 }

@@ -20,11 +20,11 @@
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>
-			<string>name_preference</string>
+			<string>aplikey_preference</string>
 			<key>KeyboardType</key>
 			<string>Alphabet</string>
 			<key>Title</key>
-			<string>Name</string>
+			<string>API key</string>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 		</dict>
@@ -39,20 +39,24 @@
 			<string>PSToggleSwitchSpecifier</string>
 		</dict>
 		<dict>
-			<key>DefaultValue</key>
-			<real>0.5</real>
-			<key>Key</key>
-			<string>slider_preference</string>
-			<key>MaximumValue</key>
-			<integer>1</integer>
-			<key>MaximumValueImage</key>
-			<string></string>
-			<key>MinimumValue</key>
-			<integer>0</integer>
-			<key>MinimumValueImage</key>
-			<string></string>
 			<key>Type</key>
-			<string>PSSliderSpecifier</string>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Refresh Period</string>
+			<key>Key</key>
+			<string>refresh_preference</string>
+			<key>DefaultValue</key>
+			<string>5</string>
+			<key>Titles</key>
+			<array>
+				<string>5 Seconds</string>
+				<string>10 Seconds</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>5</string>
+				<string>10</string>
+			</array>
 		</dict>
 	</array>
 	<key>StringsTable</key>

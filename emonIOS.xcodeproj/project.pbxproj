@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CCF5199A81CE26264D0880C /* Pods_emonIOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E6C754D301F9D6BED9F6CF /* Pods_emonIOSTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		C56771CDA0C327115DD8385A /* Pods_emonIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7535CC15C90718EB728AEB9 /* Pods_emonIOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CA8C23081B63D1630090C591 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C23071B63D1630090C591 /* AppDelegate.swift */; };
 		CA8C230A1B63D1630090C591 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C23091B63D1630090C591 /* MasterViewController.swift */; };
 		CA8C230C1B63D1630090C591 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C230B1B63D1630090C591 /* DetailViewController.swift */; };
@@ -14,6 +16,19 @@
 		CA8C23111B63D1630090C591 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8C23101B63D1630090C591 /* Images.xcassets */; };
 		CA8C23141B63D1630090C591 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8C23121B63D1630090C591 /* LaunchScreen.xib */; };
 		CA8C23201B63D1630090C591 /* emonIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C231F1B63D1630090C591 /* emonIOSTests.swift */; };
+		CA8C232A1B63FB3D0090C591 /* emonAccountSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C23291B63FB3D0090C591 /* emonAccountSpec.swift */; };
+		CA8C232C1B63FFBA0090C591 /* EmonAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C232B1B63FFBA0090C591 /* EmonAccount.swift */; };
+		CA8C232D1B6402530090C591 /* EmonAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C232B1B63FFBA0090C591 /* EmonAccount.swift */; };
+		CA8C232F1B6426660090C591 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C232E1B6426660090C591 /* Feed.swift */; };
+		CA8C23301B6426810090C591 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C232E1B6426660090C591 /* Feed.swift */; };
+		CA8C23341B642CE40090C591 /* FeedSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C23331B642CE40090C591 /* FeedSpec.swift */; };
+		CA8C23361B6437B70090C591 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA8C23351B6437B70090C591 /* Settings.bundle */; };
+		CA8C23381B64388E0090C591 /* EmonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C23371B64388E0090C591 /* EmonService.swift */; };
+		CA8C23391B6443630090C591 /* EmonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C23371B64388E0090C591 /* EmonService.swift */; };
+		CA8C233B1B64D15E0090C591 /* AddLabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C233A1B64D15D0090C591 /* AddLabelViewController.swift */; };
+		CA8C233D1B6511E50090C591 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C233C1B6511E50090C591 /* FeedView.swift */; };
+		CA8C236D1B6587D30090C591 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C236C1B6587D30090C591 /* Settings.swift */; };
+		CA8C236F1B6589C30090C591 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C236E1B6589C30090C591 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +42,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03A18DE2CFB581CB492BC4BE /* Pods-emonIOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emonIOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-emonIOSTests/Pods-emonIOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		18E6C754D301F9D6BED9F6CF /* Pods_emonIOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_emonIOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BEC2FD2D04873F677ABB8C0 /* Pods-emonIOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emonIOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-emonIOSTests/Pods-emonIOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		684A7FEEF5E2D3D8A1F05587 /* Pods-emonIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emonIOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-emonIOS/Pods-emonIOS.debug.xcconfig"; sourceTree = "<group>"; };
+		89333F68F14D7D34783E69FE /* Pods-emonIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-emonIOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-emonIOS/Pods-emonIOS.release.xcconfig"; sourceTree = "<group>"; };
+		A7535CC15C90718EB728AEB9 /* Pods_emonIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_emonIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA8C23021B63D1630090C591 /* emonIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emonIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA8C23061B63D1630090C591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA8C23071B63D1630090C591 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +59,16 @@
 		CA8C23191B63D1630090C591 /* emonIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = emonIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA8C231E1B63D1630090C591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA8C231F1B63D1630090C591 /* emonIOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emonIOSTests.swift; sourceTree = "<group>"; };
+		CA8C23291B63FB3D0090C591 /* emonAccountSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = emonAccountSpec.swift; sourceTree = "<group>"; };
+		CA8C232B1B63FFBA0090C591 /* EmonAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmonAccount.swift; sourceTree = "<group>"; };
+		CA8C232E1B6426660090C591 /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		CA8C23331B642CE40090C591 /* FeedSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedSpec.swift; sourceTree = "<group>"; };
+		CA8C23351B6437B70090C591 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		CA8C23371B64388E0090C591 /* EmonService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmonService.swift; sourceTree = "<group>"; };
+		CA8C233A1B64D15D0090C591 /* AddLabelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLabelViewController.swift; sourceTree = "<group>"; };
+		CA8C233C1B6511E50090C591 /* FeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		CA8C236C1B6587D30090C591 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		CA8C236E1B6589C30090C591 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C56771CDA0C327115DD8385A /* Pods_emonIOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,18 +84,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CCF5199A81CE26264D0880C /* Pods_emonIOSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8FA0F33ECAF9192BC83A0AAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7535CC15C90718EB728AEB9 /* Pods_emonIOS.framework */,
+				18E6C754D301F9D6BED9F6CF /* Pods_emonIOSTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		CA8C22F91B63D1630090C591 = {
 			isa = PBXGroup;
 			children = (
 				CA8C23041B63D1630090C591 /* emonIOS */,
 				CA8C231C1B63D1630090C591 /* emonIOSTests */,
 				CA8C23031B63D1630090C591 /* Products */,
+				F240C2750025116E132CED45 /* Pods */,
+				8FA0F33ECAF9192BC83A0AAF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,10 +126,18 @@
 				CA8C23071B63D1630090C591 /* AppDelegate.swift */,
 				CA8C23091B63D1630090C591 /* MasterViewController.swift */,
 				CA8C230B1B63D1630090C591 /* DetailViewController.swift */,
+				CA8C233A1B64D15D0090C591 /* AddLabelViewController.swift */,
+				CA8C236E1B6589C30090C591 /* SettingsViewController.swift */,
 				CA8C230D1B63D1630090C591 /* Main.storyboard */,
 				CA8C23101B63D1630090C591 /* Images.xcassets */,
 				CA8C23121B63D1630090C591 /* LaunchScreen.xib */,
 				CA8C23051B63D1630090C591 /* Supporting Files */,
+				CA8C232B1B63FFBA0090C591 /* EmonAccount.swift */,
+				CA8C232E1B6426660090C591 /* Feed.swift */,
+				CA8C23351B6437B70090C591 /* Settings.bundle */,
+				CA8C23371B64388E0090C591 /* EmonService.swift */,
+				CA8C233C1B6511E50090C591 /* FeedView.swift */,
+				CA8C236C1B6587D30090C591 /* Settings.swift */,
 			);
 			path = emonIOS;
 			sourceTree = "<group>";
@@ -103,6 +155,8 @@
 			children = (
 				CA8C231F1B63D1630090C591 /* emonIOSTests.swift */,
 				CA8C231D1B63D1630090C591 /* Supporting Files */,
+				CA8C23291B63FB3D0090C591 /* emonAccountSpec.swift */,
+				CA8C23331B642CE40090C591 /* FeedSpec.swift */,
 			);
 			path = emonIOSTests;
 			sourceTree = "<group>";
@@ -115,6 +169,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F240C2750025116E132CED45 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				684A7FEEF5E2D3D8A1F05587 /* Pods-emonIOS.debug.xcconfig */,
+				89333F68F14D7D34783E69FE /* Pods-emonIOS.release.xcconfig */,
+				03A18DE2CFB581CB492BC4BE /* Pods-emonIOSTests.debug.xcconfig */,
+				1BEC2FD2D04873F677ABB8C0 /* Pods-emonIOSTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -122,9 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA8C23231B63D1630090C591 /* Build configuration list for PBXNativeTarget "emonIOS" */;
 			buildPhases = (
+				273153AE508B805A5C181C49 /* Check Pods Manifest.lock */,
 				CA8C22FE1B63D1630090C591 /* Sources */,
 				CA8C22FF1B63D1630090C591 /* Frameworks */,
 				CA8C23001B63D1630090C591 /* Resources */,
+				241E52AF40E87C24091E3746 /* Embed Pods Frameworks */,
+				BED8637C2579ECB884E3DE79 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -139,9 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA8C23261B63D1630090C591 /* Build configuration list for PBXNativeTarget "emonIOSTests" */;
 			buildPhases = (
+				59D2A8C18DB24407512667F1 /* Check Pods Manifest.lock */,
 				CA8C23151B63D1630090C591 /* Sources */,
 				CA8C23161B63D1630090C591 /* Frameworks */,
 				CA8C23171B63D1630090C591 /* Resources */,
+				B8AC3CD1529507DAA9522375 /* Embed Pods Frameworks */,
+				63085A5C49A706B42AF3CAB1 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -164,6 +235,7 @@
 				TargetAttributes = {
 					CA8C23011B63D1630090C591 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 8VS2EQ2BMR;
 					};
 					CA8C23181B63D1630090C591 = {
 						CreatedOnToolsVersion = 6.4;
@@ -195,6 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA8C23361B6437B70090C591 /* Settings.bundle in Resources */,
 				CA8C230F1B63D1630090C591 /* Main.storyboard in Resources */,
 				CA8C23141B63D1630090C591 /* LaunchScreen.xib in Resources */,
 				CA8C23111B63D1630090C591 /* Images.xcassets in Resources */,
@@ -210,12 +283,112 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		241E52AF40E87C24091E3746 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-emonIOS/Pods-emonIOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		273153AE508B805A5C181C49 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		59D2A8C18DB24407512667F1 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		63085A5C49A706B42AF3CAB1 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-emonIOSTests/Pods-emonIOSTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8AC3CD1529507DAA9522375 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-emonIOSTests/Pods-emonIOSTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BED8637C2579ECB884E3DE79 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-emonIOS/Pods-emonIOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CA8C22FE1B63D1630090C591 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA8C233D1B6511E50090C591 /* FeedView.swift in Sources */,
+				CA8C233B1B64D15E0090C591 /* AddLabelViewController.swift in Sources */,
+				CA8C232C1B63FFBA0090C591 /* EmonAccount.swift in Sources */,
+				CA8C236F1B6589C30090C591 /* SettingsViewController.swift in Sources */,
+				CA8C232F1B6426660090C591 /* Feed.swift in Sources */,
+				CA8C23381B64388E0090C591 /* EmonService.swift in Sources */,
 				CA8C230C1B63D1630090C591 /* DetailViewController.swift in Sources */,
+				CA8C236D1B6587D30090C591 /* Settings.swift in Sources */,
 				CA8C230A1B63D1630090C591 /* MasterViewController.swift in Sources */,
 				CA8C23081B63D1630090C591 /* AppDelegate.swift in Sources */,
 			);
@@ -226,6 +399,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA8C23201B63D1630090C591 /* emonIOSTests.swift in Sources */,
+				CA8C23341B642CE40090C591 /* FeedSpec.swift in Sources */,
+				CA8C23301B6426810090C591 /* Feed.swift in Sources */,
+				CA8C232A1B63FB3D0090C591 /* emonAccountSpec.swift in Sources */,
+				CA8C23391B6443630090C591 /* EmonService.swift in Sources */,
+				CA8C232D1B6402530090C591 /* EmonAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,8 +522,11 @@
 		};
 		CA8C23241B63D1630090C591 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 684A7FEEF5E2D3D8A1F05587 /* Pods-emonIOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = emonIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -354,8 +535,11 @@
 		};
 		CA8C23251B63D1630090C591 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89333F68F14D7D34783E69FE /* Pods-emonIOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = emonIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -364,6 +548,7 @@
 		};
 		CA8C23271B63D1630090C591 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03A18DE2CFB581CB492BC4BE /* Pods-emonIOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -383,6 +568,7 @@
 		};
 		CA8C23281B63D1630090C591 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BEC2FD2D04873F677ABB8C0 /* Pods-emonIOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -415,6 +601,7 @@
 				CA8C23251B63D1630090C591 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CA8C23261B63D1630090C591 /* Build configuration list for PBXNativeTarget "emonIOSTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +610,7 @@
 				CA8C23281B63D1630090C591 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

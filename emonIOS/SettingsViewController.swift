@@ -6,4 +6,26 @@
 //  Copyright (c) 2015 Allen Conquest. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import InAppSettingsKit
+
+class SettingsViewController: UIViewController, IASKSettingsDelegate {
+    
+    override func viewDidLoad() {
+        
+        if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "showSettingsPopover")
+        }
+        
+    }
+    
+    // MARK: IASKAppSettingsViewControllerDelegate protocol
+    func settingsViewControllerDidEnd(sender: IASKAppSettingsViewController!) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        // your code here to reconfigure the app for changed settings
+    }
+    
+    
+}

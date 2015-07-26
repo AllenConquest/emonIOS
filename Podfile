@@ -5,7 +5,7 @@ platform :ios, '8.0'
 
 target 'emonIOS' do
 
-#pod 'InAppSettingsKit'
+pod 'InAppSettingsKit'
 pod 'Alamofire'
 pod 'SwiftyJSON'
 
