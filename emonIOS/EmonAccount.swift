@@ -24,7 +24,7 @@ class EmonAccount {
         if error != nil
         {
             // TODO: improved error handling
-            var alert = UIAlertController(title: "Error", message: "Could not load MetaData :( \(error?.localizedDescription)", preferredStyle: UIAlertControllerStyle.Alert)
+            var alert = UIAlertController(title: "Error", message: "Could not load Data :( \(error?.localizedDescription)", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
 //            self.presentViewController(alert, animated: true, completion: nil)
         } else {
@@ -48,7 +48,6 @@ class EmonAccount {
             print (json)
             completion(json, error)
         }
-
     }
     
 }

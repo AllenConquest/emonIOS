@@ -21,9 +21,7 @@ class AddLabelViewController: UIViewController, UIPickerViewDataSource, UIPicker
         // Load datasource
         if  let feeds = account?.feeds {
             for feed in feeds {
-                if let name = feed.name {
-                    pickerDataSource.append(name)
-                }
+                pickerDataSource.append(feed.name)
             }
         }
     }

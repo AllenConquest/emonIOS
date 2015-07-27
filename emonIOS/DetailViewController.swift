@@ -17,13 +17,6 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
     var feedViews = [FeedView]()
     var timer = NSTimer()
     var appSettingsViewController: IASKAppSettingsViewController!
-    
-    var detailItem: AnyObject? {
-        didSet {
-            // Update the view.
-            self.configureView()
-        }
-    }
 
 
     @IBAction func displaySettings(sender: UIBarButtonItem) {
@@ -37,17 +30,32 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
         
     }
     
-    
     func configureView() {
-        // Update the user interface for the detail item.
-        if let detail: AnyObject = self.detailItem {
+        // Update the user interface with feeds
+        for feed in account.feeds {
+            if let data = NSData(contentsOfFile: NSHomeDirectory().stringByAppendingString("/Documents/\(feed.name).bin")) {
+                let unarchiveFeed = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? Feed
+                if let unwrappedFeed = unarchiveFeed {
+                    
+                    let view = FeedView(frame: CGRectMake(20, 80, 400, 75))
+                    view.userInteractionEnabled = true
+                    view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "handlePanGesture:"))
+                    let tap = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
+                    tap.numberOfTapsRequired = 2
+                    view.addGestureRecognizer(tap)
+                    view.addCustomView(feed)
+                    feed.position = unwrappedFeed.position
+                    view.center = feed.position
+                    self.view.addSubview(view)
+                    self.feedViews.append(view)
+                }
+            }
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.configureView()
         
         appSettingsViewController = IASKAppSettingsViewController(style: UITableViewStyle.Grouped)
         appSettingsViewController.showDoneButton = false
@@ -55,6 +63,8 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
         
         account = EmonAccount()
         
+        self.configureView()
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingDidChange:", name: kIASKAppSettingChanged, object: nil)
 
     }
@@ -92,9 +102,9 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
     func updateInfo(timer: NSTimer) {
         
         for view in feedViews {
-            account.refreshFeed(view.viewFeed!.id!, completion: {
+            account.refreshFeed(view.viewFeed!.id, completion: {
                 (json, error) in
-                println("\(view.viewFeed?.name!): \(json)")
+                println("\(view.viewFeed?.name): \(json)")
                 view.value.text = "\(json)"
             })
         }
@@ -115,7 +125,7 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
         if sender.state == .Ended {
             // TODO - pop up window allowing selection of feed
             if let view = sender.view as? FeedView {
-                account.refreshFeed(view.viewFeed!.id!, completion: {
+                account.refreshFeed(view.viewFeed!.id, completion: {
                 (json, error) in
                     println(json)
                     view.value.text = "\(json)"
@@ -158,6 +168,21 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
                         view.addCustomView(feed)
                         self.view.addSubview(view)
                         self.feedViews.append(view)
+                        feed.position = view.center
+                        
+                        var filename = NSHomeDirectory().stringByAppendingString("/Documents/\(feed.name).bin")
+                        let data = NSKeyedArchiver.archivedDataWithRootObject(feed)
+                        let success = data.writeToFile(filename, atomically: true)
+                        println(success)
+                        
+                        if let data = NSData(contentsOfFile: NSHomeDirectory().stringByAppendingString("/Documents/\(feed.name).bin")) {
+                            let unarchiveAlbums = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? Feed
+                            if let unwrappedAlbum = unarchiveAlbums {
+                                let y = unwrappedAlbum
+                                println(y)
+                            }
+                        }
+                        
                     }
                 })
             }

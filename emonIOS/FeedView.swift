@@ -30,12 +30,10 @@ class FeedView: UIView {
         label.textAlignment = NSTextAlignment.Center
         label.text = feed.name
         self.addSubview(label)
-
-        if let feedValue = feed.value {
-            value.frame = CGRectMake(200, 10, 200, 50)
-            value.textAlignment = NSTextAlignment.Center
-            value.text = "\(feedValue)"
-            self.addSubview(value)
-        }
+        
+        value.frame = CGRectMake(200, 10, 200, 50)
+        value.textAlignment = NSTextAlignment.Center
+        value.text = "\(feed.value)"
+        self.addSubview(value)
     }
 }

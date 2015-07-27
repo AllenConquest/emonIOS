@@ -9,10 +9,11 @@
 import Quick
 import Nimble
 import emonIOS
+import SwiftyJSON
 
 class FeedSpec: QuickSpec {
-//    override func spec() {
-//        
+    override func spec() {
+        
 //        var feed: Feed!
 //        
 //        beforeEach() {
@@ -34,5 +35,14 @@ class FeedSpec: QuickSpec {
 //            }
 //            
 //        }
-//    }
+        
+        it("can be encode and decoded") {
+            var json = JSON(["id":"101","userid":"202","name":"fred","datatype":"1","tag":"","public":"0","size":"12345","engine":"5","server":"1","time":"123","value":"123.456"])
+            var test = Feed(item: json)
+            NSKeyedArchiver.archiveRootObject(test, toFile: "/feed/data")
+            var y = NSKeyedUnarchiver.unarchiveObjectWithFile("/feed/data") as? Feed
+            println (y)
+        }
+        
+    }
 }
