@@ -189,7 +189,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     }
 
     func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
-        //do som stuff from the popover
+        //do some stuff from the popover
         print ("Popover closing")
     }
     
@@ -214,7 +214,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
                     
                     if let feed = controller.pickedFeed {
 
-                        let view = FeedView(frame: CGRectMake(20, 80, 400, 75))
+                        let view = self.addFeedView()
                         view.userInteractionEnabled = true
                         view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "handlePanGesture:"))
                         let tap = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
@@ -227,6 +227,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
                         view.addCustomView(feed)
                         self.view.addSubview(view)
                         self.feedViews.append(view)
+                        view.center = CGPointMake(40, 120)
                         feed.position = view.center
                         
                         var filename = NSHomeDirectory().stringByAppendingString("/Documents/\(feed.name).bin")
@@ -240,6 +241,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         }
     }
     
+    // Add drop shadow effect on custom view
     func addFeedView() -> FeedView {
     
         let superview = FeedView(frame: CGRectMake(0, 0, 420, 80))
