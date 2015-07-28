@@ -13,13 +13,14 @@ class AddLabelViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var feedPicker: UIPickerView!
     
     var account: EmonAccount?
+    var feeds: [Feed]?
     var pickerDataSource = [String]()
     var pickedFeed: Feed?
     
     override func viewDidLoad() {
         
         // Load datasource
-        if  let feeds = account?.feeds {
+        if  let feeds = self.feeds {
             for feed in feeds {
                 pickerDataSource.append(feed.name)
             }
@@ -53,6 +54,6 @@ class AddLabelViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        pickedFeed = account?.feeds[row]
+        pickedFeed = feeds![row]
     }
 }

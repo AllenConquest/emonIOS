@@ -10,11 +10,12 @@ import UIKit
 import SwiftyJSON
 import InAppSettingsKit
 
-class DetailViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
     
     var account: EmonAccount!
     var feedViews = [FeedView]()
+    var feeds = [Feed]()
     var timer = NSTimer()
     var appSettingsViewController: IASKAppSettingsViewController!
 
@@ -30,29 +31,45 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
         
     }
     
-    func configureView() {
-        // Update the user interface with feeds
-        for feed in account.feeds {
-            if let data = NSData(contentsOfFile: NSHomeDirectory().stringByAppendingString("/Documents/\(feed.name).bin")) {
-                let unarchiveFeed = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? Feed
-                if let unwrappedFeed = unarchiveFeed {
+    func processFeeds(json: JSON, error: NSError?) {
+        
+        if error != nil
+        {
+            // TODO: improved error handling
+            var alert = UIAlertController(title: "Error", message: "Could not load Data :( \(error?.localizedDescription)", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        } else {
+            
+            print (json)
+            if let feedArray = json.array {
+                for item in feedArray {
+                    let feed = Feed(item: item)
+                    feeds.append(feed)
                     
-                    let view = FeedView(frame: CGRectMake(20, 80, 400, 75))
-                    view.userInteractionEnabled = true
-                    view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "handlePanGesture:"))
-                    let tap = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
-                    tap.numberOfTapsRequired = 2
-                    view.addGestureRecognizer(tap)
-                    view.addCustomView(feed)
-                    feed.position = unwrappedFeed.position
-                    view.center = feed.position
-                    self.view.addSubview(view)
-                    self.feedViews.append(view)
+                    if let data = NSData(contentsOfFile: NSHomeDirectory().stringByAppendingString("/Documents/\(feed.name).bin")) {
+                        let unarchiveFeed = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? Feed
+                        if let unwrappedFeed = unarchiveFeed {
+                            
+                            let view = FeedView(frame: CGRectMake(20, 80, 400, 75))
+                            view.userInteractionEnabled = true
+                            view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "handlePanGesture:"))
+                            let tap = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
+                            tap.numberOfTapsRequired = 2
+                            view.addGestureRecognizer(tap)
+                            view.addCustomView(feed)
+                            feed.position = unwrappedFeed.position
+                            view.center = feed.position
+                            self.view.addSubview(view)
+                            self.feedViews.append(view)
+                        }
+                    }
+
                 }
             }
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -61,9 +78,7 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
         appSettingsViewController.showDoneButton = false
         appSettingsViewController.showCreditsFooter = false
         
-        account = EmonAccount()
-        
-        self.configureView()
+        account = EmonAccount(completion: processFeeds)
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingDidChange:", name: kIASKAppSettingChanged, object: nil)
 
@@ -115,6 +130,16 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
         switch sender.state {
         case .Changed:
             sender.view?.center = sender.locationInView(sender.view?.superview)
+        case .Ended:
+            if let feedView = sender.view as? FeedView {
+                if let feed = feedView.viewFeed {
+                    feed.position = sender.view?.center
+                    var filename = NSHomeDirectory().stringByAppendingString("/Documents/\(feed.name).bin")
+                    let data = NSKeyedArchiver.archivedDataWithRootObject(feed)
+                    let success = data.writeToFile(filename, atomically: true)
+                    println(success)
+                }
+            }
         default:
             println("default")
         }
@@ -145,6 +170,7 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
                 if let content = controller.popoverPresentationController?.presentedViewController {
                     if let contentVC = (content as! UINavigationController).topViewController as? AddLabelViewController {
                         contentVC.account = account
+                        contentVC.feeds = feeds
                     }
                 }
             }
@@ -174,14 +200,6 @@ class DetailViewController: UIViewController, UIPopoverPresentationControllerDel
                         let data = NSKeyedArchiver.archivedDataWithRootObject(feed)
                         let success = data.writeToFile(filename, atomically: true)
                         println(success)
-                        
-                        if let data = NSData(contentsOfFile: NSHomeDirectory().stringByAppendingString("/Documents/\(feed.name).bin")) {
-                            let unarchiveAlbums = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? Feed
-                            if let unwrappedAlbum = unarchiveAlbums {
-                                let y = unwrappedAlbum
-                                println(y)
-                            }
-                        }
                         
                     }
                 })

@@ -7,7 +7,7 @@
         <!--Detail-->
         <scene sceneID="yUG-lL-AsK">
             <objects>
-                <viewController title="Detail" id="JEX-9P-axG" customClass="DetailViewController" customModule="emonIOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Detail" id="JEX-9P-axG" customClass="ViewController" customModule="emonIOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
                         <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
@@ -25,7 +25,7 @@
                         <gestureRecognizers/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM">
+                    <navigationItem key="navigationItem" title="emonIOS" id="mOI-FS-AaM">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="K5u-0W-Acg">
                             <connections>
                                 <action selector="displaySettings:" destination="JEX-9P-axG" id="1Bw-N0-ZiA"/>

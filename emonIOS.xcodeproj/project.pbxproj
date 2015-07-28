@@ -10,8 +10,7 @@
 		4CCF5199A81CE26264D0880C /* Pods_emonIOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E6C754D301F9D6BED9F6CF /* Pods_emonIOSTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C56771CDA0C327115DD8385A /* Pods_emonIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7535CC15C90718EB728AEB9 /* Pods_emonIOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CA8C23081B63D1630090C591 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C23071B63D1630090C591 /* AppDelegate.swift */; };
-		CA8C230A1B63D1630090C591 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C23091B63D1630090C591 /* MasterViewController.swift */; };
-		CA8C230C1B63D1630090C591 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C230B1B63D1630090C591 /* DetailViewController.swift */; };
+		CA8C230C1B63D1630090C591 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C230B1B63D1630090C591 /* ViewController.swift */; };
 		CA8C230F1B63D1630090C591 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8C230D1B63D1630090C591 /* Main.storyboard */; };
 		CA8C23111B63D1630090C591 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8C23101B63D1630090C591 /* Images.xcassets */; };
 		CA8C23141B63D1630090C591 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8C23121B63D1630090C591 /* LaunchScreen.xib */; };
@@ -51,8 +50,7 @@
 		CA8C23021B63D1630090C591 /* emonIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emonIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA8C23061B63D1630090C591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA8C23071B63D1630090C591 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CA8C23091B63D1630090C591 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		CA8C230B1B63D1630090C591 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		CA8C230B1B63D1630090C591 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CA8C230E1B63D1630090C591 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA8C23101B63D1630090C591 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CA8C23131B63D1630090C591 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -124,8 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				CA8C23071B63D1630090C591 /* AppDelegate.swift */,
-				CA8C23091B63D1630090C591 /* MasterViewController.swift */,
-				CA8C230B1B63D1630090C591 /* DetailViewController.swift */,
+				CA8C230B1B63D1630090C591 /* ViewController.swift */,
 				CA8C233A1B64D15D0090C591 /* AddLabelViewController.swift */,
 				CA8C236E1B6589C30090C591 /* SettingsViewController.swift */,
 				CA8C230D1B63D1630090C591 /* Main.storyboard */,
@@ -387,9 +384,8 @@
 				CA8C236F1B6589C30090C591 /* SettingsViewController.swift in Sources */,
 				CA8C232F1B6426660090C591 /* Feed.swift in Sources */,
 				CA8C23381B64388E0090C591 /* EmonService.swift in Sources */,
-				CA8C230C1B63D1630090C591 /* DetailViewController.swift in Sources */,
+				CA8C230C1B63D1630090C591 /* ViewController.swift in Sources */,
 				CA8C236D1B6587D30090C591 /* Settings.swift in Sources */,
-				CA8C230A1B63D1630090C591 /* MasterViewController.swift in Sources */,
 				CA8C23081B63D1630090C591 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

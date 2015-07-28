@@ -13,10 +13,10 @@ class EmonAccount {
     var apiKey: String = "1db10447b3dcf65fe313e2a1f522d4db"
     var feeds = [Feed]()
  
-    init() {
+    init(completion: (JSON, NSError?) -> Void) {
         
         let emonService = EmonService()
-        emonService.getFeeds("http://emoncms.org/feed/list.json", parameters: ["apikey":apiKey], completionHandler: processFeeds)
+        emonService.getFeeds("http://emoncms.org/feed/list.json", parameters: ["apikey":apiKey], completionHandler: completion)
     }
     
     func processFeeds(json: JSON, error: NSError?) {
@@ -30,7 +30,6 @@ class EmonAccount {
         } else {
             
             print (json)
-            var names = [String]()
             if let feedArray = json.array {
                 for item in feedArray {
                     let feed = Feed(item: item)
