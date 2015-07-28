@@ -15,8 +15,6 @@ class FeedView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.borderWidth = 2.0
-        self.layer.borderColor = UIColor.blackColor().CGColor
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -26,14 +24,54 @@ class FeedView: UIView {
     func addCustomView(feed: Feed) {
         
         viewFeed = feed
-        label.frame = CGRectMake(10, 10, 200, 50)
+        label.frame = CGRectMake(10, 15, 200, 50)
         label.textAlignment = NSTextAlignment.Center
         label.text = feed.name
         self.addSubview(label)
         
-        value.frame = CGRectMake(200, 10, 200, 50)
+        value.frame = CGRectMake(200, 15, 200, 50)
         value.textAlignment = NSTextAlignment.Center
         value.text = "\(feed.value)"
         self.addSubview(value)
     }
+    
+    /* Degrees to radians conversion */
+    func degreesToRadians (degrees: CGFloat) -> CGFloat {
+        return  CGFloat(Double(degrees) / 180.0 * M_PI)
+    }
+    
+    func smoothJiggle() {
+        
+        let degrees: CGFloat = 5.0
+        let animation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+        animation.duration = 0.6
+        animation.cumulative = true
+        animation.repeatCount = Float.infinity
+        animation.values = [0.0,
+            degreesToRadians(-degrees) * 0.25,
+            0.0,
+            degreesToRadians(degrees) * 0.5,
+            0.0,
+            degreesToRadians(-degrees),
+            0.0,
+            degreesToRadians(degrees),
+            0.0,
+            degreesToRadians(-degrees) * 0.5,
+            0.0,
+            degreesToRadians(degrees) * 0.25,
+            0.0]
+        animation.fillMode = kCAFillModeForwards;
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.removedOnCompletion = true
+        
+        layer.addAnimation(animation, forKey: "wobble")
+    }
+
+    func stopJiggling() {
+        self.layer.removeAllAnimations()
+        self.transform = CGAffineTransformIdentity
+        self.layer.anchorPoint = CGPointMake(0.5, 0.5)
+    }
+    
+
 }

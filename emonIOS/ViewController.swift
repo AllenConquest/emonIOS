@@ -51,17 +51,23 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
                         let unarchiveFeed = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? Feed
                         if let unwrappedFeed = unarchiveFeed {
                             
-                            let view = FeedView(frame: CGRectMake(20, 80, 400, 75))
+                            let view = addFeedView()
+                            
                             view.userInteractionEnabled = true
                             view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "handlePanGesture:"))
                             let tap = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
                             tap.numberOfTapsRequired = 2
                             view.addGestureRecognizer(tap)
+                            let long = UILongPressGestureRecognizer(target: self, action: "handleLongPressGesture:")
+                            long.minimumPressDuration = 0.5
+                            long.enabled = true
+                            view.addGestureRecognizer(long)
                             view.addCustomView(feed)
                             feed.position = unwrappedFeed.position
                             view.center = feed.position
                             self.view.addSubview(view)
                             self.feedViews.append(view)
+                            
                         }
                     }
 
@@ -82,6 +88,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingDidChange:", name: kIASKAppSettingChanged, object: nil)
 
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleResetTapGesture:"))
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -145,6 +152,19 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         }
     }
 
+    func handleLongPressGesture(sender: UILongPressGestureRecognizer) {
+        
+        switch sender.state {
+        case .Began:
+            println("Long Press Began")
+            if let feedView = sender.view as? FeedView {
+                feedView.smoothJiggle()
+            }
+        default:
+            println("default")
+        }
+    }
+    
     func handleTapGesture(sender: UIPanGestureRecognizer) {
         
         if sender.state == .Ended {
@@ -158,7 +178,16 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
             }
         }
     }
-    
+
+    func handleResetTapGesture(sender: UIPanGestureRecognizer) {
+        
+        if sender.state == .Ended {
+            for view in feedViews {
+                view.stopJiggling()
+            }
+        }
+    }
+
     func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
         //do som stuff from the popover
         print ("Popover closing")
@@ -191,6 +220,10 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
                         let tap = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
                         tap.numberOfTapsRequired = 2
                         view.addGestureRecognizer(tap)
+                        let long = UILongPressGestureRecognizer(target: self, action: "handleLongPressGesture:")
+                        long.minimumPressDuration = 1
+                        long.enabled = true
+                        view.addGestureRecognizer(long)
                         view.addCustomView(feed)
                         self.view.addSubview(view)
                         self.feedViews.append(view)
@@ -205,6 +238,28 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
                 })
             }
         }
+    }
+    
+    func addFeedView() -> FeedView {
+    
+        let superview = FeedView(frame: CGRectMake(0, 0, 420, 80))
+        
+        let shadowView = UIView(frame: CGRectMake(10, 10, 400, 60))
+        shadowView.layer.shadowColor = UIColor.blackColor().CGColor
+        shadowView.layer.shadowOffset = CGSizeZero
+        shadowView.layer.shadowOpacity = 0.5
+        shadowView.layer.shadowRadius = 5
+        
+        let view = UIView(frame: shadowView.bounds)
+        view.backgroundColor = UIColor.whiteColor()
+        view.layer.cornerRadius = 10.0
+        view.layer.borderColor = UIColor.grayColor().CGColor
+        view.layer.borderWidth = 0.5
+        view.clipsToBounds = true
+        
+        shadowView.addSubview(view)
+        superview.addSubview(shadowView)
+        return superview
     }
 }
 
