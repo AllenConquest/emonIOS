@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import InAppSettingsKit
 
-class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+class ViewController: UIViewController, UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate {
 
     
     var account: EmonAccount!
@@ -18,7 +18,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     var feeds = [Feed]()
     var timer = NSTimer()
     var appSettingsViewController: IASKAppSettingsViewController!
-
 
     @IBAction func displaySettings(sender: UIBarButtonItem) {
         println("This will display the settings window")
@@ -52,16 +51,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
                         if let unwrappedFeed = unarchiveFeed {
                             
                             let view = addFeedView()
-                            
-                            view.userInteractionEnabled = true
-                            view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "handlePanGesture:"))
-                            let tap = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
-                            tap.numberOfTapsRequired = 2
-                            view.addGestureRecognizer(tap)
-                            let long = UILongPressGestureRecognizer(target: self, action: "handleLongPressGesture:")
-                            long.minimumPressDuration = 0.5
-                            long.enabled = true
-                            view.addGestureRecognizer(long)
                             view.addCustomView(feed)
                             feed.position = unwrappedFeed.position
                             view.center = feed.position
@@ -86,9 +75,11 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         
         account = EmonAccount(completion: processFeeds)
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingDidChange:", name: kIASKAppSettingChanged, object: nil)
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleResetTapGesture:")
+        tapGestureRecognizer.delegate = self
+        view.addGestureRecognizer(tapGestureRecognizer)
 
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "handleResetTapGesture:"))
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingDidChange:", name: kIASKAppSettingChanged, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -132,53 +123,13 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         }
     }
     
-    func handlePanGesture(sender: UIPanGestureRecognizer) {
-        
-        switch sender.state {
-        case .Changed:
-            sender.view?.center = sender.locationInView(sender.view?.superview)
-        case .Ended:
-            if let feedView = sender.view as? FeedView {
-                if let feed = feedView.viewFeed {
-                    feed.position = sender.view?.center
-                    var filename = NSHomeDirectory().stringByAppendingString("/Documents/\(feed.name).bin")
-                    let data = NSKeyedArchiver.archivedDataWithRootObject(feed)
-                    let success = data.writeToFile(filename, atomically: true)
-                    println(success)
-                }
-            }
-        default:
-            println("default")
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if touch.view == self.view {
+            return true
         }
-    }
-
-    func handleLongPressGesture(sender: UILongPressGestureRecognizer) {
-        
-        switch sender.state {
-        case .Began:
-            println("Long Press Began")
-            if let feedView = sender.view as? FeedView {
-                feedView.smoothJiggle()
-            }
-        default:
-            println("default")
-        }
+        return false
     }
     
-    func handleTapGesture(sender: UIPanGestureRecognizer) {
-        
-        if sender.state == .Ended {
-            // TODO - pop up window allowing selection of feed
-            if let view = sender.view as? FeedView {
-                account.refreshFeed(view.viewFeed!.id, completion: {
-                (json, error) in
-                    println(json)
-                    view.value.text = "\(json)"
-                })
-            }
-        }
-    }
-
     func handleResetTapGesture(sender: UIPanGestureRecognizer) {
         
         if sender.state == .Ended {
@@ -215,15 +166,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
                     if let feed = controller.pickedFeed {
 
                         let view = self.addFeedView()
-                        view.userInteractionEnabled = true
-                        view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "handlePanGesture:"))
-                        let tap = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
-                        tap.numberOfTapsRequired = 2
-                        view.addGestureRecognizer(tap)
-                        let long = UILongPressGestureRecognizer(target: self, action: "handleLongPressGesture:")
-                        long.minimumPressDuration = 1
-                        long.enabled = true
-                        view.addGestureRecognizer(long)
                         view.addCustomView(feed)
                         self.view.addSubview(view)
                         self.feedViews.append(view)
