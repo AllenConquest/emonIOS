@@ -30,9 +30,11 @@ class FeedView: UIView, UIGestureRecognizerDelegate {
             self.removeFromSuperview()
             
             var filename = NSHomeDirectory().stringByAppendingString("/Documents/\(viewFeed!.name).bin")
-            let data = NSKeyedArchiver.archivedDataWithRootObject(viewFeed!)
-            let success = data.writeToFile(filename, atomically: true)
-            
+            var error: NSError?
+            let success = NSFileManager.defaultManager().removeItemAtPath(filename, error: &error)
+            if !success {
+                println(error)
+            }
         }
     }
     
