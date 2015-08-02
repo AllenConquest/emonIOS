@@ -7,16 +7,24 @@
 //
 
 import SwiftyJSON
+import InAppSettingsKit
 
 class EmonAccount {
   
-    var apiKey: String = "1db10447b3dcf65fe313e2a1f522d4db"
+    var apiKey: String?
+    var emonUrl: String?
     var feeds = [Feed]()
  
     init(completion: (JSON, NSError?) -> Void) {
         
-        let emonService = EmonService()
-        emonService.getFeeds("http://emoncms.org/feed/list.json", parameters: ["apikey":apiKey], completionHandler: completion)
+        apiKey = IASKSettingsStoreUserDefaults().objectForKey("apikey_preference") as? String
+        emonUrl = IASKSettingsStoreUserDefaults().objectForKey("url_preference") as? String
+        if let key = apiKey, url = emonUrl where !key.isEmpty && !url.isEmpty {
+            let emonService = EmonService()
+            emonService.getFeeds("\(url)/feed/list.json", parameters: ["apikey":key], completionHandler: completion)
+        } else {
+            completion(nil, NSError(domain: "emonAccount", code: 01, userInfo: nil))
+        }
     }
     
     func processFeeds(json: JSON, error: NSError?) {
@@ -41,11 +49,13 @@ class EmonAccount {
 
     func refreshFeed(feed: String, completion: (JSON, NSError?) -> Void) {
 
-        let emonService = EmonService()
-        emonService.getFeeds("http://emoncms.org/feed/value.json", parameters: ["id":feed, "apikey":apiKey]) {
-            (json, error) in
-            print (json)
-            completion(json, error)
+        if let key = apiKey, url = emonUrl {
+            let emonService = EmonService()
+            emonService.getFeeds("\(url)/feed/value.json", parameters: ["id":feed, "apikey":key]) {
+                (json, error) in
+                print (json)
+                completion(json, error)
+            }
         }
     }
     

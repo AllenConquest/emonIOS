@@ -11,6 +11,18 @@
 			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>emon Site</string>
+			<key>Key</key>
+			<string>url_preference</string>
+			<key>KeyboardType</key>
+			<string>URL</string>
+			<key>DefaultValue</key>
+			<string>http://emoncms.org</string>
+		</dict>
+		<dict>
 			<key>AutocapitalizationType</key>
 			<string>None</string>
 			<key>AutocorrectionType</key>
@@ -20,7 +32,7 @@
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>
-			<string>aplikey_preference</string>
+			<string>apikey_preference</string>
 			<key>KeyboardType</key>
 			<string>Alphabet</string>
 			<key>Title</key>

@@ -12,7 +12,6 @@
 		CA8C23081B63D1630090C591 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C23071B63D1630090C591 /* AppDelegate.swift */; };
 		CA8C230C1B63D1630090C591 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C230B1B63D1630090C591 /* ViewController.swift */; };
 		CA8C230F1B63D1630090C591 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA8C230D1B63D1630090C591 /* Main.storyboard */; };
-		CA8C23111B63D1630090C591 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8C23101B63D1630090C591 /* Images.xcassets */; };
 		CA8C23141B63D1630090C591 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8C23121B63D1630090C591 /* LaunchScreen.xib */; };
 		CA8C23201B63D1630090C591 /* emonIOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C231F1B63D1630090C591 /* emonIOSTests.swift */; };
 		CA8C232A1B63FB3D0090C591 /* emonAccountSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C23291B63FB3D0090C591 /* emonAccountSpec.swift */; };
@@ -28,6 +27,7 @@
 		CA8C233D1B6511E50090C591 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C233C1B6511E50090C591 /* FeedView.swift */; };
 		CA8C236D1B6587D30090C591 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C236C1B6587D30090C591 /* Settings.swift */; };
 		CA8C236F1B6589C30090C591 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C236E1B6589C30090C591 /* SettingsViewController.swift */; };
+		CA8C23711B6D96880090C591 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8C23701B6D96880090C591 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,6 @@
 		CA8C23071B63D1630090C591 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA8C230B1B63D1630090C591 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CA8C230E1B63D1630090C591 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CA8C23101B63D1630090C591 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CA8C23131B63D1630090C591 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CA8C23191B63D1630090C591 /* emonIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = emonIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA8C231E1B63D1630090C591 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		CA8C233C1B6511E50090C591 /* FeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		CA8C236C1B6587D30090C591 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		CA8C236E1B6589C30090C591 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CA8C23701B6D96880090C591 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,12 +121,12 @@
 		CA8C23041B63D1630090C591 /* emonIOS */ = {
 			isa = PBXGroup;
 			children = (
+				CA8C23701B6D96880090C591 /* Images.xcassets */,
 				CA8C23071B63D1630090C591 /* AppDelegate.swift */,
 				CA8C230B1B63D1630090C591 /* ViewController.swift */,
 				CA8C233A1B64D15D0090C591 /* AddLabelViewController.swift */,
 				CA8C236E1B6589C30090C591 /* SettingsViewController.swift */,
 				CA8C230D1B63D1630090C591 /* Main.storyboard */,
-				CA8C23101B63D1630090C591 /* Images.xcassets */,
 				CA8C23121B63D1630090C591 /* LaunchScreen.xib */,
 				CA8C23051B63D1630090C591 /* Supporting Files */,
 				CA8C232B1B63FFBA0090C591 /* EmonAccount.swift */,
@@ -265,9 +265,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA8C23361B6437B70090C591 /* Settings.bundle in Resources */,
+				CA8C23711B6D96880090C591 /* Images.xcassets in Resources */,
 				CA8C230F1B63D1630090C591 /* Main.storyboard in Resources */,
 				CA8C23141B63D1630090C591 /* LaunchScreen.xib in Resources */,
-				CA8C23111B63D1630090C591 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

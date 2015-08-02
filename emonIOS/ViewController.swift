@@ -32,9 +32,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
     
     func processFeeds(json: JSON, error: NSError?) {
         
-        if error != nil
-        {
-            // TODO: improved error handling
+        if error != nil {
+            // TODO: improve error handling
             var alert = UIAlertController(title: "Error", message: "Could not load Data :( \(error?.localizedDescription)", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
