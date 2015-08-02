@@ -45,20 +45,14 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
                     let feed = Feed(item: item)
                     feeds.append(feed)
                     
-                    if let data = NSData(contentsOfFile: NSHomeDirectory().stringByAppendingString("/Documents/\(feed.name).bin")) {
-                        let unarchiveFeed = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? Feed
-                        if let unwrappedFeed = unarchiveFeed {
-                            
-                            let view = addFeedView()
-                            view.addCustomView(feed)
-                            feed.position = unwrappedFeed.position
-                            view.center = feed.position
-                            self.view.addSubview(view)
-                            self.feedViews.append(view)
-                            
-                        }
+                    if let unwrappedFeed = Persist.load(feed.name) as? Feed {
+                        let view = addFeedView()
+                        view.addCustomView(feed)
+                        feed.position = unwrappedFeed.position
+                        view.center = feed.position
+                        self.view.addSubview(view)
+                        self.feedViews.append(view)
                     }
-
                 }
             }
         }
@@ -171,9 +165,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
                         view.center = CGPointMake(40, 120)
                         feed.position = view.center
                         
-                        var filename = NSHomeDirectory().stringByAppendingString("/Documents/\(feed.name).bin")
-                        let data = NSKeyedArchiver.archivedDataWithRootObject(feed)
-                        let success = data.writeToFile(filename, atomically: true)
+                        let success = Persist.save(feed.name, object: feed)
                         println(success)
                         
                     }
@@ -205,4 +197,3 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         return superview
     }
 }
-

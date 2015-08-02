@@ -29,11 +29,8 @@ class FeedView: UIView, UIGestureRecognizerDelegate {
         if sender.state == .Ended {
             self.removeFromSuperview()
             
-            var filename = NSHomeDirectory().stringByAppendingString("/Documents/\(viewFeed!.name).bin")
-            var error: NSError?
-            let success = NSFileManager.defaultManager().removeItemAtPath(filename, error: &error)
-            if !success {
-                println(error)
+            if let name = viewFeed?.name {
+                Persist.delete(name)
             }
         }
     }
@@ -60,9 +57,7 @@ class FeedView: UIView, UIGestureRecognizerDelegate {
             if let feedView = sender.view as? FeedView {
                 if let feed = feedView.viewFeed {
                     feed.position = sender.view?.center
-                    var filename = NSHomeDirectory().stringByAppendingString("/Documents/\(feed.name).bin")
-                    let data = NSKeyedArchiver.archivedDataWithRootObject(feed)
-                    let success = data.writeToFile(filename, atomically: true)
+                    let success = Persist.save(feed.name, object: feed)
                     println(success)
                 }
             }

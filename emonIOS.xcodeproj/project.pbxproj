@@ -28,6 +28,7 @@
 		CA8C236D1B6587D30090C591 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C236C1B6587D30090C591 /* Settings.swift */; };
 		CA8C236F1B6589C30090C591 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C236E1B6589C30090C591 /* SettingsViewController.swift */; };
 		CA8C23711B6D96880090C591 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8C23701B6D96880090C591 /* Images.xcassets */; };
+		CAFD4DF41B6E45940091B5E8 /* Persist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFD4DF31B6E45940091B5E8 /* Persist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		CA8C236C1B6587D30090C591 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		CA8C236E1B6589C30090C591 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CA8C23701B6D96880090C591 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CAFD4DF31B6E45940091B5E8 /* Persist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persist.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				CA8C23371B64388E0090C591 /* EmonService.swift */,
 				CA8C233C1B6511E50090C591 /* FeedView.swift */,
 				CA8C236C1B6587D30090C591 /* Settings.swift */,
+				CAFD4DF31B6E45940091B5E8 /* Persist.swift */,
 			);
 			path = emonIOS;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAFD4DF41B6E45940091B5E8 /* Persist.swift in Sources */,
 				CA8C233D1B6511E50090C591 /* FeedView.swift in Sources */,
 				CA8C233B1B64D15E0090C591 /* AddLabelViewController.swift in Sources */,
 				CA8C232C1B63FFBA0090C591 /* EmonAccount.swift in Sources */,
