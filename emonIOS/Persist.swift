@@ -12,7 +12,7 @@ struct Persist {
     
     static func save(name: String, object: AnyObject) -> Bool {
         
-        var filename = NSHomeDirectory().stringByAppendingString("/Documents/\(name).bin")
+        let filename = NSHomeDirectory().stringByAppendingString("/Documents/\(name).bin")
         let data = NSKeyedArchiver.archivedDataWithRootObject(object)
         let success = data.writeToFile(filename, atomically: true)
         return success
@@ -28,11 +28,18 @@ struct Persist {
     
     static func delete(name: String) {
         
-        var filename = NSHomeDirectory().stringByAppendingString("/Documents/\(name).bin")
+        let filename = NSHomeDirectory().stringByAppendingString("/Documents/\(name).bin")
         var error: NSError?
-        let success = NSFileManager.defaultManager().removeItemAtPath(filename, error: &error)
+        let success: Bool
+        do {
+            try NSFileManager.defaultManager().removeItemAtPath(filename)
+            success = true
+        } catch let error1 as NSError {
+            error = error1
+            success = false
+        }
         if !success {
-            println(error)
+            print(error)
         }
     }
 }

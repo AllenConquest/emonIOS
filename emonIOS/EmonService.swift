@@ -14,19 +14,20 @@ class EmonService {
     func getFeeds(url: String, parameters: [String:String], completionHandler: (JSON, NSError?) -> Void) {
         
         Alamofire.request(.GET, url, parameters: parameters)
-            .responseJSON { (req, res, json, error) in
-                if(error != nil) {
-                    NSLog("Error: \(error)")
-                    println(req)
-                    println(res)
-                    completionHandler(nil, error)
-                } else {
-                    NSLog("Success: \(url)")
-                    var json = JSON(json!)
+            .responseJSON { (request, response, result) in
+
+                // TODO add error handling
+                
+                switch result {
+                case .Success:
+                    print("Successful")
+                    
+                    let json = JSON(result.value!)
                     completionHandler(json, nil)
+                case .Failure(let error):
+                    print(error)
+                    completionHandler(nil, nil)
                 }
         }
-        
     }
-    
 }

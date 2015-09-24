@@ -1,49 +1,80 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vC3-pB-5Vb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="83h-5Y-0BF">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--Detail-->
-        <scene sceneID="yUG-lL-AsK">
+        <!--emonIOS-->
+        <scene sceneID="p6A-ev-b5M">
             <objects>
-                <viewController title="Detail" id="JEX-9P-axG" customClass="ViewController" customModule="emonIOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
-                        <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
+                <collectionViewController id="sZo-lJ-BS6" customClass="ViewController" customModule="emonIOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Z0J-5m-w1f">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HMu-6i-okh">
-                                <rect key="frame" x="205" y="218" width="317" height="232"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="emonIOS" id="mOI-FS-AaM">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="K5u-0W-Acg">
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="epK-LH-Lyi">
+                            <size key="itemSize" width="243" height="102"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FeedCell" id="LyG-rt-64t" customClass="FeedCollectionViewCell" customModule="emonIOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="243" height="102"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="243" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBZ-83-8L9">
+                                            <rect key="frame" x="8" y="8" width="147" height="43"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKJ-pS-hYL">
+                                            <rect key="frame" x="8" y="59" width="147" height="35"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YG9-OT-6YB">
+                                            <rect key="frame" x="11" y="8" width="220" height="86"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <outlet property="title" destination="iBZ-83-8L9" id="bgT-ka-XDr"/>
+                                    <outlet property="value" destination="gKJ-pS-hYL" id="wnS-BN-XnR"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="sZo-lJ-BS6" id="ZZz-Pa-0Ja"/>
+                            <outlet property="delegate" destination="sZo-lJ-BS6" id="3vB-ff-VAR"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="emonIOS" id="pfn-Dl-nAc">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="hpS-Ud-bNJ">
                             <connections>
-                                <action selector="displaySettings:" destination="JEX-9P-axG" id="1Bw-N0-ZiA"/>
+                                <action selector="displaySettings:" destination="sZo-lJ-BS6" id="BFY-Tx-Arg"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="waJ-gV-c3F">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="6xR-uF-dau">
                             <connections>
-                                <action selector="addButton:" destination="JEX-9P-axG" id="CII-sr-Drb"/>
-                                <segue destination="jXs-wG-IeG" kind="popoverPresentation" identifier="showAddLabel" popoverAnchorBarButtonItem="waJ-gV-c3F" id="wVL-h6-A1Z">
+                                <segue destination="jXs-wG-IeG" kind="popoverPresentation" identifier="showAddLabel" popoverAnchorBarButtonItem="6xR-uF-dau" id="FJB-ee-ylp">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rkC-iF-n8T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gfa-Rv-ODR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="709" y="129"/>
+            <point key="canvasLocation" x="1030" y="2"/>
         </scene>
         <!--Add Label View Controller-->
         <scene sceneID="gd7-xi-rUl">
@@ -57,7 +88,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIY-EX-hKy">
+                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tIY-EX-hKy">
                                 <rect key="frame" x="0.0" y="80" width="600" height="162"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Dw8-bz-dDP" id="9Ez-aJ-Ivl"/>
@@ -93,27 +124,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="feedPicker" destination="tIY-EX-hKy" id="71d-oG-7cV"/>
+                        <segue destination="gfa-Rv-ODR" kind="unwind" unwindAction="unwindToVC:" id="tFe-RJ-PfP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wu7-gM-FWO" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="APA-Cx-ruD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1530" y="882"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="r7l-gg-dq7">
-            <objects>
-                <navigationController id="vC3-pB-5Vb" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DjV-YW-jjY">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="JEX-9P-axG" kind="relationship" relationship="rootViewController" id="GKi-kA-LjT"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-45" y="129"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="W4o-QF-zfq">
@@ -132,6 +149,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8V2-b6-r7z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="709" y="882"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Iow-Bd-RHJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="83h-5Y-0BF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zsO-PE-iet">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sZo-lJ-BS6" kind="relationship" relationship="rootViewController" id="wpq-2V-2sM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cvR-Eg-Okh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="358" y="2"/>
         </scene>
     </scenes>
 </document>

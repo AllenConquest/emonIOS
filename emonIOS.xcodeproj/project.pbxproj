@@ -28,6 +28,7 @@
 		CA8C236D1B6587D30090C591 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C236C1B6587D30090C591 /* Settings.swift */; };
 		CA8C236F1B6589C30090C591 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8C236E1B6589C30090C591 /* SettingsViewController.swift */; };
 		CA8C23711B6D96880090C591 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA8C23701B6D96880090C591 /* Images.xcassets */; };
+		CAB01D5B1B70E3DD002344E8 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB01D5A1B70E3DD002344E8 /* FeedCollectionViewCell.swift */; };
 		CAFD4DF41B6E45940091B5E8 /* Persist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFD4DF31B6E45940091B5E8 /* Persist.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		CA8C236C1B6587D30090C591 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		CA8C236E1B6589C30090C591 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CA8C23701B6D96880090C591 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CAB01D5A1B70E3DD002344E8 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		CAFD4DF31B6E45940091B5E8 /* Persist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Persist.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +128,7 @@
 				CA8C23701B6D96880090C591 /* Images.xcassets */,
 				CA8C23071B63D1630090C591 /* AppDelegate.swift */,
 				CA8C230B1B63D1630090C591 /* ViewController.swift */,
+				CAB01D5A1B70E3DD002344E8 /* FeedCollectionViewCell.swift */,
 				CA8C233A1B64D15D0090C591 /* AddLabelViewController.swift */,
 				CA8C236E1B6589C30090C591 /* SettingsViewController.swift */,
 				CA8C230D1B63D1630090C591 /* Main.storyboard */,
@@ -230,7 +233,9 @@
 		CA8C22FA1B63D1630090C591 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Allen Conquest";
 				TargetAttributes = {
 					CA8C23011B63D1630090C591 = {
@@ -383,6 +388,7 @@
 			files = (
 				CAFD4DF41B6E45940091B5E8 /* Persist.swift in Sources */,
 				CA8C233D1B6511E50090C591 /* FeedView.swift in Sources */,
+				CAB01D5B1B70E3DD002344E8 /* FeedCollectionViewCell.swift in Sources */,
 				CA8C233B1B64D15E0090C591 /* AddLabelViewController.swift in Sources */,
 				CA8C232C1B63FFBA0090C591 /* EmonAccount.swift in Sources */,
 				CA8C236F1B6589C30090C591 /* SettingsViewController.swift in Sources */,
@@ -458,6 +464,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -529,6 +536,7 @@
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = emonIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ajc.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -542,6 +550,7 @@
 				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = emonIOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ajc.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -561,6 +570,7 @@
 				);
 				INFOPLIST_FILE = emonIOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ajc.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/emonIOS.app/emonIOS";
 			};
@@ -577,6 +587,7 @@
 				);
 				INFOPLIST_FILE = emonIOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ajc.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/emonIOS.app/emonIOS";
 			};

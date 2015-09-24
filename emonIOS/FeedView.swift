@@ -19,13 +19,13 @@ class FeedView: UIView, UIGestureRecognizerDelegate {
         super.init(frame: frame)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     func handleCloseTap(sender: UIPanGestureRecognizer) {
         
-        println("handleCloseTap")
+        print("handleCloseTap")
         if sender.state == .Ended {
             self.removeFromSuperview()
             
@@ -39,12 +39,12 @@ class FeedView: UIView, UIGestureRecognizerDelegate {
         
         switch sender.state {
         case .Began:
-            println("Long Press Began")
+            print("Long Press Began")
             if let feedView = sender.view as? FeedView {
                 feedView.smoothJiggle()
             }
         default:
-            println("default")
+            print("default")
         }
     }
 
@@ -58,11 +58,11 @@ class FeedView: UIView, UIGestureRecognizerDelegate {
                 if let feed = feedView.viewFeed {
                     feed.position = sender.view?.center
                     let success = Persist.save(feed.name, object: feed)
-                    println(success)
+                    print(success)
                 }
             }
         default:
-            println("default")
+            print("default")
         }
     }
     

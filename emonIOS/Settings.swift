@@ -32,7 +32,7 @@ func processDefaultSettings() {
             // process each specifier in the current settings file
             for specifier in preferenceSpecfiers {
                 
-                println(specifier.debugDescription)
+                print(specifier.debugDescription)
                 // get type of current specifier
                 let type = specifier[kIASKType] as! String
                 

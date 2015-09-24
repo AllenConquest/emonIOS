@@ -9,20 +9,22 @@
 import UIKit
 import SwiftyJSON
 import InAppSettingsKit
+import Charts
 
-class ViewController: UIViewController, UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate {
+class ViewController: UICollectionViewController, UIPopoverPresentationControllerDelegate, UIGestureRecognizerDelegate {
 
-    
     var account: EmonAccount!
     var feedViews = [FeedView]()
     var feeds = [Feed]()
     var timer = NSTimer()
     var appSettingsViewController: IASKAppSettingsViewController!
+    var names = [String]()
+    var values = [Double]()
 
     @IBAction func displaySettings(sender: UIBarButtonItem) {
-        println("This will display the settings window")
+        print("This will display the settings window")
         
-        var aNavController = UINavigationController(rootViewController: appSettingsViewController)
+        _ = UINavigationController(rootViewController: appSettingsViewController)
         self.navigationController?.pushViewController(appSettingsViewController, animated:true)
     }
     
@@ -30,11 +32,26 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         
     }
     
+    
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return feedViews.count
+    }
+    
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FeedCell", forIndexPath: indexPath) as! FeedCollectionViewCell
+        cell.title.text = feedViews[indexPath.row].label.text!
+        cell.value.text = "\(feedViews[indexPath.row].value.text!)"
+        cell.backgroundColor = UIColor.whiteColor()
+        return cell
+        
+    }
+    
     func processFeeds(json: JSON, error: NSError?) {
         
         if error != nil {
             // TODO: improve error handling
-            var alert = UIAlertController(title: "Error", message: "Could not load Data :( \(error?.localizedDescription)", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Error", message: "Could not load Data :( \(error?.localizedDescription)", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
         } else {
@@ -52,8 +69,12 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
                         view.center = feed.position
                         self.view.addSubview(view)
                         self.feedViews.append(view)
+                        
+                        self.names.append(feed.name)
+                        self.values.append(Double(feed.value))
                     }
                 }
+                collectionView?.reloadData()
             }
         }
     }
@@ -101,7 +122,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
 //            let timeInterval = IASKSettingsStoreUserDefaults().doubleForKey("refresh_preference")
 //            timer = NSTimer.scheduledTimerWithTimeInterval(timeInterval, target: self, selector: "updateInfo:", userInfo: nil, repeats: true)
         default:
-            println("Change key: \(key)")
+            print("Change key: \(key)")
         }
     }
     
@@ -110,10 +131,11 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
         for view in feedViews {
             account.refreshFeed(view.viewFeed!.id, completion: {
                 (json, error) in
-                println("\(view.viewFeed?.name): \(json)")
+                print("\(view.viewFeed?.name): \(json)")
                 view.value.text = "\(json)"
             })
         }
+        collectionView?.reloadData()
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
@@ -134,7 +156,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
 
     func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
         //do some stuff from the popover
-        print ("Popover closing")
+        print ("Popover closing", terminator: "")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -166,7 +188,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate,
                         feed.position = view.center
                         
                         let success = Persist.save(feed.name, object: feed)
-                        println(success)
+                        print(success)
                         
                     }
                 })
