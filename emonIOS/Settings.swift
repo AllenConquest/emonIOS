@@ -47,7 +47,7 @@ func processDefaultSettings() {
                         // get key from specifier and current stored preference value
                         if let key = specifier[kIASKKey] as? String {
                             
-                            if let value: AnyObject = defaults.objectForKey(key) {
+                            if let _: AnyObject = defaults.objectForKey(key) {
                                 // Nothing to do - already set
                             }
                             else {

@@ -74,12 +74,12 @@ class FeedView: UIView, UIGestureRecognizerDelegate {
         tapGestureRecognizer.delegate = self
         imageView.addGestureRecognizer(tapGestureRecognizer)
         viewFeed = feed
-        label.frame = CGRectMake(10, 15, 200, 50)
+        label.frame = CGRectMake(10, 15, 180, 50)
         label.textAlignment = NSTextAlignment.Center
         label.text = feed.name
         addSubview(label)
         
-        value.frame = CGRectMake(200, 15, 200, 50)
+        value.frame = CGRectMake(200, 15, 180, 50)
         value.textAlignment = NSTextAlignment.Center
         value.text = "\(feed.value)"
         imageView.hidden = true

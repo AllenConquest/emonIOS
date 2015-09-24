@@ -49,7 +49,7 @@ class AddLabelViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return pickerDataSource.count;
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerDataSource[row]
     }
     
